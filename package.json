@@ -5,8 +5,8 @@
   "description": "Professional store for TrendingZone.pk by Ali Asad",
   "main": "index.tsx",
   "scripts": {
-    "start": "npx serve .",
-    "build": "echo 'No build step required for ESM version. Ready to deploy!'"
+    "build": "npx tailwindcss -i ./input.css -o ./style.css --minify",
+    "start": "npx tailwindcss -i ./input.css -o ./style.css --watch & npx serve ."
   },
   "keywords": [
     "ecommerce",
@@ -14,5 +14,10 @@
     "trendingzone"
   ],
   "author": "Ali Asad",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35"
+  }
 }

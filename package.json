@@ -3,10 +3,12 @@
   "name": "trendingzone-pk",
   "version": "1.0.0",
   "description": "Professional store for TrendingZone.pk by Ali Asad",
-  "main": "index.tsx",
+  "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -i ./input.css -o ./style.css --minify",
-    "start": "npx tailwindcss -i ./input.css -o ./style.css --watch & npx serve ."
+    "build": "npm run build-css && npm run build-js",
+    "build-css": "npx tailwindcss -i ./input.css -o ./style.css --minify",
+    "build-js": "npx esbuild index.tsx --bundle --outfile=index.js --format=esm --minify --external:react --external:react-dom --external:@google/genai --loader:.tsx=tsx --loader:.ts=ts",
+    "start": "npx tailwindcss -i ./input.css -o ./style.css --watch & npx esbuild index.tsx --bundle --outfile=index.js --format=esm --watch --external:react --external:react-dom --external:@google/genai --loader:.tsx=tsx --loader:.ts=ts & npx serve ."
   },
   "keywords": [
     "ecommerce",
@@ -18,6 +20,8 @@
   "devDependencies": {
     "tailwindcss": "^3.4.1",
     "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.35"
+    "postcss": "^8.4.35",
+    "esbuild": "^0.20.1",
+    "serve": "^14.2.1"
   }
 }
